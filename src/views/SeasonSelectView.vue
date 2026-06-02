@@ -115,6 +115,11 @@ function openIdentityEditor() {
 
     <!-- Notification toasts -->
     <FeedbackToast />
+
+    <!-- Author info -->
+    <footer class="author-footer">
+      Made with &#10084; by <a href="https://github.com/aruun1212" target="_blank" rel="noopener">@aruun1212</a>
+    </footer>
   </div>
 </template>
 
@@ -350,5 +355,25 @@ function openIdentityEditor() {
   .identity-badge { top: 10px; right: 10px; padding: 4px 10px 4px 6px; }
   .badge-emoji { font-size: 1.1rem; }
   .badge-name { font-size: 0.78rem; }
+}
+
+.author-footer {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  font-size: 0.72rem;
+  color: var(--color-text-dim);
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.author-footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.author-footer a:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 </style>

@@ -38,3 +38,14 @@ __screenshots__/
 
 # Vite
 *.timestamp-*-*.mjs
+
+# Build tools (contain local paths)
+tools/
+fix_*.py
+gen_*.py
+meta_*.py
+*.pyc
+__pycache__/
+supabase-schema*.sql
+src/data/events_u13_u27.txt
+test_cn.txt
