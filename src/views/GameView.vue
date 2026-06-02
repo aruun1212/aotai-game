@@ -1253,9 +1253,14 @@ function descentMarch() {
 
 /* Mobile */
 @media (max-width: 640px) {
-  .game-view { padding: var(--spacing-sm); gap: var(--spacing-sm); }
-  .map-area { height: 30vh; min-height: 180px; max-height: 280px; }
-  .march-panel, .camp-panel { padding: var(--spacing-md); }
+  .game-view {
+    padding: var(--spacing-sm);
+    padding-bottom: calc(var(--spacing-sm) + env(safe-area-inset-bottom, 0px));
+    gap: var(--spacing-xs);
+    min-height: 100dvh;
+  }
+  .map-area { height: 25vh; min-height: 150px; max-height: 220px; }
+  .march-panel, .camp-panel { padding: var(--spacing-sm); }
   .march-actions { flex-direction: column; }
   .camp-actions { flex-direction: column; }
   .btn-march, .btn-descent, .btn-rack { width: 100%; }

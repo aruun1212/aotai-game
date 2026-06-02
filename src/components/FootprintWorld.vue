@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { supabaseReady } from '@/lib/supabase'
+import { ref, onMounted, watch } from 'vue'
+import { supabaseReady, initSupabase } from '@/lib/supabase'
 import { fetchRecentFootprints, fetchVisibleDead } from '@/services/deadPlayerService'
 
 // Segment positions (simplified Y coordinates for SVG visualization)
@@ -23,8 +23,23 @@ const deadMarkers = ref<{ x: number; y: number }[]>([])
 const loaded = ref(false)
 
 onMounted(async () => {
+  // 等待 Supabase 初始化
+  if (!supabaseReady.value) {
+    await initSupabase()
+  }
   if (!supabaseReady.value) { loaded.value = true; return }
 
+  await loadFootprints()
+})
+
+// 也监听 supabaseReady 变化（以防 init 在父组件完成后才 ready）
+watch(supabaseReady, async (ready) => {
+  if (ready && dots.value.length === 0) {
+    await loadFootprints()
+  }
+})
+
+async function loadFootprints() {
   const [footprints, dead] = await Promise.all([
     fetchRecentFootprints(40),
     fetchVisibleDead(20),
@@ -54,7 +69,7 @@ onMounted(async () => {
   }
 
   loaded.value = true
-})
+}
 </script>
 
 <template>
@@ -90,10 +105,15 @@ onMounted(async () => {
       />
     </svg>
 
-    <!-- Stats overlay -->
-    <div v-if="dots.length > 0" class="world-stats">
+    <!-- Stats overlay — also serves as entry label -->
+    <div v-if="dots.length > 0 || deadMarkers.length > 0" class="world-stats">
+      <span class="stats-icon">🗺️</span>
       <span>{{ dots.length }} 位旅人的足迹</span>
       <span v-if="deadMarkers.length > 0"> · {{ deadMarkers.length }} 处遗痕</span>
+    </div>
+    <div v-else-if="loaded" class="world-stats empty">
+      <span class="stats-icon">🗺️</span>
+      <span>等待第一位旅人留下足迹...</span>
     </div>
   </div>
 </template>
@@ -154,13 +174,26 @@ onMounted(async () => {
 
 .world-stats {
   position: absolute;
-  bottom: 12px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: var(--color-text-dim);
-  opacity: 0.5;
+  opacity: 0.7;
   white-space: nowrap;
   font-family: var(--font-ui);
+  background: rgba(20, 18, 15, 0.7);
+  padding: 4px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 167, 83, 0.2);
+  pointer-events: auto;
+}
+
+.world-stats .stats-icon {
+  margin-right: 4px;
+}
+
+.world-stats.empty {
+  opacity: 0.4;
 }
 </style>

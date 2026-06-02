@@ -276,7 +276,12 @@ function effectName(type: string): string {
 }
 
 @media (max-width: 640px) {
-  .status-bar { gap: var(--spacing-sm); padding: var(--spacing-xs) var(--spacing-sm); font-size: 0.75rem; }
+  .status-bar {
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    padding-bottom: calc(var(--spacing-xs) + env(safe-area-inset-bottom, 0px));
+    font-size: 0.75rem;
+  }
   .water-group { min-width: 110px; }
   .water-bar-outer { width: 40px; }
   .segment-info { display: none; }
