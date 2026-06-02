@@ -1,0 +1,358 @@
+export const U13_EVENT: GameEvent = {
+  id: 'U13', category: 'encounter', subtype: 'weather',
+  segments: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u5929\u8272\u7a81\u7136\u6697\u4e0b\u6765\uff0c\u4e4c\u4e91\u4ece\u897f\u8fb9\u7ffb\u6d8c\u800c\u81f3\u3002\u5927\u9897\u7684\u96e8\u6ef4\u7838\u5728\u8138\u4e0a\u2014\u2014\u66b4\u96e8\u6765\u4e86\u3002\u4f60\u7684\u80cc\u5305\u5916\u5c42\u5df2\u7ecf\u5f00\u59cb\u6e17\u6c34\u3002',
+  choices: [
+    {
+      id: 'U13-1', text: '\u7528\u9632\u6c34\u888b\u4fdd\u62a4\u88c5\u5907',
+      requiresItem: 'dry_bag',
+      consequences: [],
+      narrative: '\u4f60\u8fc5\u901f\u628a\u91cd\u8981\u7269\u8d44\u585e\u8fdb\u9632\u6c34\u888b\u3002\u80cc\u5305\u5916\u9762\u6e7f\u4e86\uff0c\u91cc\u9762\u4f9d\u7136\u5e72\u71e5\u3002',
+    },
+    {
+      id: 'U13-2', text: '\u627e\u5757\u5ca9\u58c1\u8eb2\u4e00\u4f1a\u513f',
+      consequences: [{ type: 'skip_turn' }],
+      narrative: '\u4f60\u7f29\u5728\u4e00\u5757\u7a81\u51fa\u7684\u5ca9\u58c1\u4e0b\u7b49\u96e8\u505c\u3002\u635f\u5931\u4e86\u4e00\u4e9b\u65f6\u95f4\uff0c\u4f46\u81f3\u5c11\u6ca1\u6709\u6dcb\u900f\u3002',
+    },
+    {
+      id: 'U13-3', text: '\u5192\u96e8\u7ee7\u7eed\u8d70',
+      probability: 0.4,
+      consequences: [{ type: 'add_status', payload: { type: 'wet', speedModifier: -1, turnsRemaining: 3 } }],
+      failConsequences: [{ type: 'add_status', payload: { type: 'cold', speedModifier: -1, turnsRemaining: 4 } }],
+      failNarrative: '\u96e8\u6bd4\u60f3\u8c61\u4e2d\u5927\u5f97\u591a\u3002\u4f53\u6e29\u5728\u5feb\u901f\u4e0b\u964d\uff0c\u51b7\u5230\u53d1\u6296\u3002',
+      narrative: '\u8fd8\u80fd\u8d70\u3002\u8863\u670d\u6e7f\u900f\u4e86\uff0c\u6709\u70b9\u51b7\uff0c\u4f46\u6ca1\u4ec0\u4e48\u5927\u4e8b\u3002',
+    },
+  ],
+}
+
+export const U14_EVENT: GameEvent = {
+  id: 'U14', category: 'encounter', subtype: 'terrain',
+  segments: [2, 3, 4, 5, 6, 7, 8, 9], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u524d\u65b9\u7684\u8def\u5b8c\u5168\u88ab\u4e00\u7247\u4e71\u77f3\u8986\u76d6\u3002\u6bcf\u5757\u77f3\u5934\u90fd\u5728\u4f60\u8e29\u4e0a\u53bb\u7684\u77ac\u95f4\u6447\u6643\uff0c\u50cf\u662f\u6545\u610f\u5728\u8ddf\u4f60\u5f00\u73a9\u7b11\u3002',
+  choices: [
+    {
+      id: 'U14-1', text: '\u7528\u767b\u5c71\u6756\u8bd5\u63a2\u6bcf\u4e00\u6b65',
+      requiresItem: 'pole',
+      consequences: [],
+      narrative: '\u6756\u5c16\u6572\u51fb\u77f3\u9762\u7684\u58f0\u97f3\u56de\u54cd\u5728\u5c71\u8c37\u91cc\u3002\u6162\uff0c\u4f46\u7a33\u3002',
+    },
+    {
+      id: 'U14-2', text: '\u5c0f\u5fc3\u7ffc\u7ffc\u5730\u8e29\u7a33\u8d70',
+      probability: 0.5,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'sprain', speedModifier: -1, turnsRemaining: -1 } }],
+      failNarrative: '\u4e00\u5757\u77f3\u5934\u7a81\u7136\u7ffb\u8f6c\u2014\u2014\u4f60\u7684\u811a\u5361\u5728\u77f3\u7f1d\u91cc\u626d\u4e86\u4e00\u4e0b\u3002',
+      narrative: '\u4f60\u56db\u80a2\u5e76\u7528\uff0c\u7ec8\u4e8e\u7a7f\u8fc7\u4e86\u8fd9\u7247\u4e71\u77f3\u533a\u3002',
+    },
+  ],
+}
+
+export const U15_EVENT: GameEvent = {
+  id: 'U15', category: 'encounter', subtype: 'discovery',
+  segments: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u8def\u8fb9\u6709\u4e2a\u88ab\u9057\u5f03\u7684\u5851\u6599\u74f6\uff0c\u91cc\u9762\u8fd8\u6709\u5c0f\u534a\u74f6\u6c34\u3002\u74f6\u8eab\u4e0a\u7528\u8bb0\u53f7\u7b14\u5199\u7740\uff1a\u7ed9\u540e\u9762\u7684\u4eba\u3002',
+  choices: [
+    {
+      id: 'U15-1', text: '\u559d\u6389\u5b83',
+      consequences: [{ type: 'modify_water', payload: 0.3 }],
+      narrative: '\u6c34\u6709\u70b9\u6e29\u70ed\uff0c\u5e26\u7740\u9633\u5149\u7684\u5473\u9053\u3002\u4f60\u9ed8\u9ed8\u611f\u8c22\u4e86\u90a3\u4e2a\u4e0d\u77e5\u540d\u7684\u4eba\u3002',
+    },
+    {
+      id: 'U15-2', text: '\u7559\u7ed9\u66f4\u9700\u8981\u7684\u4eba',
+      consequences: [],
+      narrative: '\u4f60\u628a\u74f6\u5b50\u653e\u56de\u539f\u5904\u3002\u4e5f\u8bb8\u540e\u9762\u6709\u4eba\u6bd4\u4f60\u66f4\u9700\u8981\u5b83\u3002',
+    },
+  ],
+}
+
+export const U16_EVENT: GameEvent = {
+  id: 'U16', category: 'encounter', subtype: 'body',
+  segments: [3, 4, 5, 6, 7, 8, 9], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u8fde\u7eed\u7684\u4e0a\u5761\u8ba9\u4f60\u7684\u5927\u817f\u704c\u4e86\u94c5\u4e00\u6837\u91cd\u3002\u6bcf\u8fc8\u4e00\u6b65\u90fd\u8981\u6d88\u8017\u5de8\u5927\u7684\u610f\u5fd7\u529b\u3002\u4f60\u7684\u8eab\u4f53\u5728\u6297\u8bae\u3002',
+  choices: [
+    {
+      id: 'U16-1', text: '\u5750\u4e0b\u6765\u4f11\u606f\u4e94\u5206\u949f',
+      consequences: [{ type: 'skip_turn' }],
+      narrative: '\u4f60\u5750\u5728\u77f3\u5934\u4e0a\u5927\u53e3\u5598\u6c14\u3002\u4e94\u5206\u949f\u540e\uff0c\u817f\u6ca1\u90a3\u4e48\u9178\u4e86\u3002',
+    },
+    {
+      id: 'U16-2', text: '\u5403\u70b9\u4e1c\u897f\u8865\u5145\u4f53\u529b',
+      consequences: [{ type: 'consume_item', payload: 'food' }],
+      narrative: '\u538b\u7f29\u997c\u5e72\u5728\u5634\u91cc\u56bc\u5f97\u5494\u5494\u54cd\u3002\u7cd6\u5206\u8ba9\u4f60\u91cd\u65b0\u6709\u4e86\u529b\u6c14\u3002',
+    },
+    {
+      id: 'U16-3', text: '\u54ac\u7259\u786c\u6491',
+      probability: 0.5,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'slow', speedModifier: -1, turnsRemaining: 2 } }],
+      failNarrative: '\u817f\u90e8\u808c\u8089\u5f00\u59cb\u4e0d\u53d7\u63a7\u5236\u5730\u98a4\u6296\u3002\u4f60\u5fc5\u987b\u653e\u6162\u901f\u5ea6\u3002',
+      narrative: '\u4f60\u7528\u610f\u5fd7\u529b\u538b\u8fc7\u4e86\u8eab\u4f53\u7684\u8b66\u62a5\u3002\u8fd8\u80fd\u8d70\u3002',
+    },
+  ],
+}
+
+export const U17_EVENT: GameEvent = {
+  id: 'U17', category: 'encounter', subtype: 'equipment',
+  segments: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u4f60\u4f4e\u5934\u53d1\u73b0\u978b\u5e26\u677e\u4e86\u2014\u2014\u4e0d\u5bf9\uff0c\u662f\u978b\u5e95\u8fb9\u7f18\u5f00\u59cb\u8131\u80f6\u4e86\u3002\u8fd9\u53cc\u978b\u6491\u4e0d\u4e86\u591a\u4e45\u4e86\u3002',
+  choices: [
+    {
+      id: 'U17-1', text: '\u7528\u7ef3\u5b50\u4e34\u65f6\u7ed1\u4f4f',
+      requiresItem: 'rope',
+      consequences: [],
+      narrative: '\u4f60\u622a\u4e86\u4e00\u5c0f\u6bb5\u7ef3\u5b50\u628a\u978b\u5e95\u7f20\u7d27\u3002\u4e0d\u597d\u770b\uff0c\u4f46\u80fd\u7528\u3002',
+    },
+    {
+      id: 'U17-2', text: '\u5c0f\u5fc3\u8d70\uff0c\u5c3d\u91cf\u522b\u52a0\u901f',
+      probability: 0.6,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'slow', speedModifier: -1, turnsRemaining: 2 } }],
+      failNarrative: '\u521a\u8d70\u51e0\u6b65\u978b\u5e95\u5f7b\u5e95\u7ffb\u5f00\u4e86\u3002\u4f60\u4e0d\u5f97\u4e0d\u653e\u6162\u811a\u6b65\u3002',
+      narrative: '\u53ea\u8981\u4e0d\u8dd1\uff0c\u5e94\u8be5\u8fd8\u80fd\u6491\u5230\u7ec8\u70b9\u3002',
+    },
+  ],
+}
+
+export const U18_EVENT: GameEvent = {
+  id: 'U18', category: 'encounter', subtype: 'weather',
+  segments: [3, 4, 5, 6, 7, 8, 9, 10], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u6d53\u96fe\u7a81\u7136\u4ece\u5c71\u8c37\u91cc\u5347\u4e0a\u6765\uff0c\u5341\u7c73\u4e4b\u5916\u5b8c\u5168\u770b\u4e0d\u89c1\u4efb\u4f55\u4e1c\u897f\u3002GPS\u4fe1\u53f7\u4e5f\u53d8\u5f97\u65ad\u65ad\u7eed\u7eed\u3002',
+  choices: [
+    {
+      id: 'U18-1', text: '\u4f9d\u9760GPS\u822a\u8ff9\u7ee7\u7eed',
+      requiresItem: 'gps',
+      consequences: [],
+      narrative: 'GPS\u867d\u7136\u4fe1\u53f7\u4e0d\u7a33\uff0c\u4f46\u8db3\u591f\u4f60\u8fa8\u8ba4\u65b9\u5411\u3002\u4f60\u5728\u767d\u832b\u832b\u4e2d\u6478\u7d22\u524d\u8fdb\u3002',
+    },
+    {
+      id: 'U18-2', text: '\u539f\u5730\u7b49\u96fe\u6563',
+      consequences: [{ type: 'skip_turn' }],
+      narrative: '\u4f60\u5750\u5728\u4e00\u5757\u5927\u77f3\u5934\u4e0a\u7b49\u5f85\u3002\u534a\u5c0f\u65f6\u540e\uff0c\u96fe\u6c14\u8584\u4e86\u4e00\u4e9b\uff0c\u80fd\u770b\u6e05\u8def\u4e86\u3002',
+    },
+    {
+      id: 'U18-3', text: '\u51ed\u611f\u89c9\u5f80\u524d\u8d70',
+      probability: 0.3,
+      consequences: [],
+      failConsequences: [{ type: 'trigger_lost' }],
+      failNarrative: '\u4f60\u8d70\u4e86\u4e0d\u77e5\u591a\u4e45\uff0c\u53d1\u73b0\u5468\u56f4\u7684\u5730\u5f62\u5b8c\u5168\u964c\u751f\u3002\u4f60\u8ff7\u8def\u4e86\u3002',
+      narrative: '\u4f60\u8fd0\u6c14\u4e0d\u9519\uff0c\u8d70\u4e86\u4e00\u6bb5\u540e\u96fe\u7a81\u7136\u6563\u4e86\uff0c\u811a\u4e0b\u8fd8\u662f\u6b63\u8def\u3002',
+    },
+  ],
+}
+
+export const U19_EVENT: GameEvent = {
+  id: 'U19', category: 'encounter', subtype: 'discovery',
+  segments: [2, 3, 4, 5, 6, 7, 8, 9], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u77f3\u7f1d\u95f4\u6709\u4e00\u9762\u892a\u8272\u7684\u7ecf\u5e61\u5728\u98ce\u4e2d\u730e\u730e\u4f5c\u54cd\u3002\u4e0b\u9762\u538b\u7740\u4e00\u5757\u5c0f\u77f3\u5934\uff0c\u77f3\u5934\u4e0a\u523b\u7740\u4e00\u884c\u5b57\uff1a\u5e73\u5b89\u3002',
+  choices: [
+    {
+      id: 'U19-1', text: '\u53cc\u624b\u5408\u5341\u9ed8\u5ff5',
+      consequences: [],
+      narrative: '\u4f60\u4e0d\u77e5\u9053\u662f\u8c01\u7559\u4e0b\u7684\u3002\u4f46\u6b64\u523b\uff0c\u8fd9\u4e24\u4e2a\u5b57\u8ba9\u4f60\u5fc3\u91cc\u8e0f\u5b9e\u4e86\u4e00\u4e9b\u3002',
+    },
+    {
+      id: 'U19-2', text: '\u4e5f\u653e\u4e00\u5757\u5c0f\u77f3\u5934',
+      consequences: [],
+      narrative: '\u4f60\u5728\u65c1\u8fb9\u52a0\u4e86\u4e00\u5757\u77f3\u5934\u3002\u4e5f\u8bb8\u540e\u6765\u8005\u4e5f\u9700\u8981\u8fd9\u4efd\u5b89\u6170\u3002',
+    },
+  ],
+}
+
+export const U20_EVENT: GameEvent = {
+  id: 'U20', category: 'encounter', subtype: 'body',
+  segments: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u4f60\u7a81\u7136\u89c9\u5f97\u5934\u75bc\u6b32\u88c2\uff0c\u592a\u9633\u7a74\u7a81\u7a81\u5730\u8df3\u3002\u773c\u524d\u7684\u666f\u8272\u5f00\u59cb\u5fae\u5fae\u65cb\u8f6c\u3002',
+  choices: [
+    {
+      id: 'U20-1', text: '\u5403\u836f\u7f13\u89e3',
+      requiresItem: 'first_aid',
+      consequences: [],
+      narrative: '\u5e03\u6d1b\u82ac\u4e0b\u809a\u5341\u5206\u949f\u540e\uff0c\u5934\u75db\u7f13\u89e3\u4e86\u4e0d\u5c11\u3002',
+    },
+    {
+      id: 'U20-2', text: '\u559d\u6c34\u4f11\u606f',
+      consequences: [{ type: 'modify_water', payload: -0.2 }],
+      narrative: '\u4f60\u5927\u53e3\u559d\u4e86\u51e0\u53e3\u6c34\uff0c\u5728\u9634\u51c9\u5904\u5750\u4e86\u4e00\u4f1a\u513f\u3002\u597d\u591a\u4e86\u3002',
+    },
+    {
+      id: 'U20-3', text: '\u5fcd\u7740\u7ee7\u7eed\u8d70',
+      probability: 0.4,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'slow', speedModifier: -1, turnsRemaining: 2 } }],
+      failNarrative: '\u5934\u8d8a\u6765\u8d8a\u75db\uff0c\u89c6\u7ebf\u6a21\u7cca\uff0c\u4f60\u4e0d\u5f97\u4e0d\u653e\u6162\u811a\u6b65\u3002',
+      narrative: '\u5934\u75db\u5728\u8d70\u4e86\u4e00\u4f1a\u513f\u540e\u81ea\u5df1\u6d88\u9000\u4e86\u3002',
+    },
+  ],
+}
+
+export const U21_EVENT: GameEvent = {
+  id: 'U21', category: 'encounter', subtype: 'terrain',
+  segments: [4, 5, 6, 7, 8], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u4e00\u6bb5\u8fd1\u4e4e\u5782\u76f4\u7684\u5ca9\u58c1\u6321\u5728\u9762\u524d\u3002\u4e0a\u9762\u6709\u4eba\u6253\u4e86\u4e24\u4e2a\u5ca9\u9489\uff0c\u6302\u7740\u4e00\u622a\u65e7\u7ef3\u5b50\uff0c\u770b\u8d77\u6765\u5e74\u4ee3\u4e45\u8fdc\u3002',
+  choices: [
+    {
+      id: 'U21-1', text: '\u7528\u81ea\u5df1\u7684\u7ef3\u5b50\u6500\u767b',
+      requiresItem: 'rope',
+      consequences: [],
+      narrative: '\u4f60\u628a\u7ef3\u5b50\u7cfb\u5728\u5ca9\u9489\u4e0a\uff0c\u4e09\u70b9\u56fa\u5b9a\u6162\u6162\u5411\u4e0a\u3002\u5b89\u5168\u62b5\u8fbe\u4e86\u4e0a\u65b9\u5e73\u53f0\u3002',
+    },
+    {
+      id: 'U21-2', text: '\u6293\u65e7\u7ef3\u5b50\u5f80\u4e0a\u722c',
+      probability: 0.3,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'injury', speedModifier: -2, turnsRemaining: 3 } }],
+      failNarrative: '\u722c\u5230\u4e00\u534a\u7ef3\u5b50\u7a81\u7136\u5d29\u65ad\uff01\u4f60\u91cd\u91cd\u6454\u4e86\u4e0b\u6765\uff0c\u624b\u638c\u548c\u819d\u76d6\u90fd\u64e6\u4f24\u4e86\u3002',
+      narrative: '\u65e7\u7ef3\u5b50\u5c45\u7136\u8fd8\u633a\u7ed3\u5b9e\u3002\u4f60\u624b\u811a\u5e76\u7528\u722c\u4e86\u4e0a\u53bb\u3002',
+    },
+    {
+      id: 'U21-3', text: '\u7ed5\u8def\u5bfb\u627e\u5176\u4ed6\u901a\u9053',
+      consequences: [{ type: 'skip_turn' }],
+      narrative: '\u4f60\u6cbf\u7740\u5ca9\u58c1\u8d70\u4e86\u597d\u4e00\u4f1a\u513f\uff0c\u7ec8\u4e8e\u627e\u5230\u4e00\u6761\u53ef\u4ee5\u7ed5\u4e0a\u53bb\u7684\u5c0f\u8def\u3002',
+    },
+  ],
+}
+
+export const U22_EVENT: GameEvent = {
+  id: 'U22', category: 'encounter', subtype: 'equipment',
+  segments: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u4f60\u6253\u5f00\u80cc\u5305\u60f3\u62ff\u4e1c\u897f\u65f6\u53d1\u73b0\u2014\u2014\u6c34\u58f6\u7684\u76d6\u5b50\u4e0d\u77e5\u4ec0\u4e48\u65f6\u5019\u677e\u4e86\uff0c\u6c34\u6d12\u4e86\u4e00\u4e9b\u5728\u5305\u91cc\u3002',
+  choices: [
+    {
+      id: 'U22-1', text: '\u8d76\u7d27\u62e7\u7d27\uff0c\u68c0\u67e5\u635f\u5931',
+      consequences: [{ type: 'modify_water', payload: -0.2 }],
+      narrative: '\u635f\u5931\u4e86\u5927\u7ea60.2\u5347\u6c34\u3002\u4f60\u6697\u9a82\u4e00\u58f0\uff0c\u628a\u76d6\u5b50\u62e7\u6b7b\u3002',
+    },
+    {
+      id: 'U22-2', text: '\u628a\u6d78\u6e7f\u7684\u4e1c\u897f\u62ff\u51fa\u6765\u667e\u5e72',
+      consequences: [{ type: 'modify_water', payload: -0.2 }, { type: 'skip_turn' }],
+      narrative: '\u4f60\u505c\u4e0b\u6765\u628a\u6e7f\u6389\u7684\u4e1c\u897f\u644a\u5f00\u667e\u3002\u6c34\u635f\u5931\u4e0d\u5927\uff0c\u4f46\u803d\u8bef\u4e86\u65f6\u95f4\u3002',
+    },
+  ],
+}
+
+export const U23_EVENT: GameEvent = {
+  id: 'U23', category: 'encounter', subtype: 'weather',
+  segments: [5, 6, 7, 8, 9, 10], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u4e00\u9635\u7a81\u5982\u5176\u6765\u7684\u51b7\u98ce\u4ece\u5c71\u810a\u5439\u8fc7\uff0c\u6e29\u5ea6\u9aa4\u964d\u3002\u4f60\u7684\u624b\u6307\u5f00\u59cb\u53d1\u9ebb\uff0c\u9f3b\u5c16\u51bb\u5f97\u53d1\u7ea2\u3002',
+  choices: [
+    {
+      id: 'U23-1', text: '\u8d76\u7d27\u7a7f\u4e0a\u4fdd\u6696\u8863\u7269',
+      requiresItem: 'warm_clothes',
+      consequences: [],
+      narrative: '\u7fbd\u7ed2\u670d\u88f9\u4e0a\u8eab\u7684\u4e00\u77ac\u95f4\uff0c\u6e29\u6696\u91cd\u65b0\u5305\u88f9\u4e86\u4f60\u3002\u7ee7\u7eed\u8d70\u3002',
+    },
+    {
+      id: 'U23-2', text: '\u52a0\u5feb\u6b65\u4f10\u7528\u8fd0\u52a8\u4ea7\u70ed',
+      probability: 0.5,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'slow', speedModifier: -1, turnsRemaining: 2 } }],
+      failNarrative: '\u8d70\u4e86\u4e00\u4f1a\u513f\u98ce\u66f4\u5927\u4e86\uff0c\u8fd0\u52a8\u4ea7\u751f\u7684\u70ed\u91cf\u6839\u672c\u4e0d\u591f\u3002\u4f60\u5f00\u59cb\u6253\u5bd2\u98a4\u3002',
+      narrative: '\u4f60\u52a0\u5feb\u6b65\u4f10\uff0c\u8eab\u4f53\u786e\u5b9e\u6696\u548c\u4e86\u8d77\u6765\u3002',
+    },
+  ],
+}
+
+export const U24_EVENT: GameEvent = {
+  id: 'U24', category: 'encounter', subtype: 'discovery',
+  segments: [3, 4, 5, 6, 7, 8, 9], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u5730\u4e0a\u6709\u4e00\u53cc\u88ab\u9057\u5f03\u7684\u767b\u5c71\u978b\uff0c\u978b\u5e95\u5df2\u7ecf\u78e8\u7a7f\u4e86\u3002\u65c1\u8fb9\u8fd8\u6709\u4e00\u53ea\u7a7a\u7684\u77ff\u6cc9\u6c34\u74f6\u548c\u51e0\u5f20\u538b\u7f29\u997c\u5e72\u7684\u5305\u88c5\u7eb8\u3002',
+  choices: [
+    {
+      id: 'U24-1', text: '\u68c0\u67e5\u9644\u8fd1\u6709\u6ca1\u6709\u5176\u4ed6\u7ebf\u7d22',
+      consequences: [],
+      narrative: '\u9664\u4e86\u8fd9\u4e9b\u5783\u573e\u4e4b\u5916\u4ec0\u4e48\u4e5f\u6ca1\u6709\u3002\u4f60\u6536\u62fe\u597d\u5fc3\u60c5\u7ee7\u7eed\u524d\u8fdb\u3002',
+    },
+    {
+      id: 'U24-2', text: '\u4e0d\u770b\u4e86\uff0c\u7ee7\u7eed\u8d70',
+      consequences: [],
+      narrative: '\u4f60\u79fb\u5f00\u4e86\u76ee\u5149\u3002\u5c71\u4e0a\u8fd9\u6837\u7684\u75d5\u8ff9\u592a\u591a\u4e86\u3002',
+    },
+  ],
+}
+
+export const U25_EVENT: GameEvent = {
+  id: 'U25', category: 'encounter', subtype: 'terrain',
+  segments: [2, 3, 4, 5, 6, 7, 8, 9, 11], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u811a\u4e0b\u7684\u6ce5\u571f\u53d8\u5f97\u5f02\u5e38\u6e7f\u6ed1\u2014\u2014\u6628\u591c\u7684\u96e8\u628a\u8fd9\u6bb5\u8def\u53d8\u6210\u4e86\u4e00\u6761\u6ce5\u6cb3\u3002\u6bcf\u4e00\u6b65\u90fd\u53ef\u80fd\u6ed1\u5012\u3002',
+  choices: [
+    {
+      id: 'U25-1', text: '\u7528\u767b\u5c71\u6756\u4fdd\u6301\u5e73\u8861',
+      requiresItem: 'pole',
+      consequences: [],
+      narrative: '\u6756\u5c16\u63d2\u8fdb\u6ce5\u91cc\u63d0\u4f9b\u989d\u5916\u652f\u6491\u3002\u867d\u7136\u6162\uff0c\u4f46\u4f60\u7a33\u7a33\u5730\u8d70\u8fc7\u4e86\u8fd9\u6bb5\u8def\u3002',
+    },
+    {
+      id: 'U25-2', text: '\u624b\u811a\u5e76\u7528\u722c\u8fc7\u53bb',
+      probability: 0.5,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'sprain', speedModifier: -1, turnsRemaining: -1 } }],
+      failNarrative: '\u4f60\u4e00\u811a\u8e29\u6ed1\uff0c\u6574\u4e2a\u4eba\u6454\u8fdb\u4e86\u6ce5\u5751\u91cc\u3002\u7ad9\u8d77\u6765\u65f6\u53d1\u73b0\u811a\u8e1d\u626d\u4e86\u3002',
+      narrative: '\u88e4\u5b50\u548c\u624b\u5957\u5168\u662f\u6ce5\uff0c\u4f46\u4f60\u5b89\u5168\u901a\u8fc7\u4e86\u3002',
+    },
+  ],
+}
+
+export const U26_EVENT: GameEvent = {
+  id: 'U26', category: 'encounter', subtype: 'body',
+  segments: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u80c3\u5728\u62bd\u6410\u2014\u2014\u4f60\u5df2\u7ecf\u5f88\u4e45\u6ca1\u5403\u4e1c\u897f\u4e86\u3002\u624b\u5f00\u59cb\u6296\uff0c\u8d70\u8def\u4e5f\u5f00\u59cb\u53d1\u98d8\u3002\u4f4e\u8840\u7cd6\u7684\u75c7\u72b6\u3002',
+  choices: [
+    {
+      id: 'U26-1', text: '\u5403\u4e1c\u897f\u8865\u5145\u80fd\u91cf',
+      consequences: [{ type: 'consume_item', payload: 'food' }],
+      narrative: '\u98df\u7269\u4e0b\u809a\u540e\uff0c\u8eab\u4f53\u6e10\u6e10\u6062\u590d\u4e86\u529b\u6c14\u3002\u4ee5\u540e\u4e0d\u80fd\u62d6\u8fd9\u4e48\u4e45\u4e86\u3002',
+    },
+    {
+      id: 'U26-2', text: '\u559d\u51e0\u53e3\u6c34\u9876\u4e00\u9876',
+      consequences: [{ type: 'modify_water', payload: -0.1 }],
+      narrative: '\u6c34\u52c9\u5f3a\u538b\u4e0b\u4e86\u80c3\u90e8\u7684\u7ffb\u6405\u611f\uff0c\u4f46\u8eab\u4f53\u4f9d\u7136\u865a\u5f31\u3002',
+    },
+    {
+      id: 'U26-3', text: '\u5fcd\u7740\u7ee7\u7eed\u8d70',
+      probability: 0.3,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'injury', speedModifier: -2, turnsRemaining: 3 } }],
+      failNarrative: '\u773c\u524d\u4e00\u9ed1\uff0c\u4f60\u5dee\u70b9\u6454\u5012\u3002\u8eab\u4f53\u5df2\u7ecf\u5230\u4e86\u6781\u9650\u3002',
+      narrative: '\u4f60\u54ac\u7259\u6491\u8fc7\u4e86\u8fd9\u9635\u865a\u5f31\u611f\u3002',
+    },
+  ],
+}
+
+export const U27_EVENT: GameEvent = {
+  id: 'U27', category: 'encounter', subtype: 'equipment',
+  segments: [3, 4, 5, 6, 7, 8, 9], seasons: ['winter', 'summer'],
+  isFixed: false,
+  narrative: '\u4f60\u4f4e\u5934\u53d1\u73b0\u767b\u5c71\u6756\u7684\u6756\u5c16\u78b3\u9489\u5df2\u7ecf\u78e8\u5e73\u4e86\uff0c\u6775\u5728\u77f3\u5934\u4e0a\u76f4\u6253\u6ed1\u3002\u7ee7\u7eed\u7528\u53ef\u80fd\u66f4\u5371\u9669\u3002',
+  choices: [
+    {
+      id: 'U27-1', text: '\u6536\u8d77\u767b\u5c71\u6756\uff0c\u7528\u624b\u4fdd\u6301\u5e73\u8861',
+      probability: 0.5,
+      consequences: [],
+      failConsequences: [{ type: 'add_status', payload: { type: 'slow', speedModifier: -1, turnsRemaining: 2 } }],
+      failNarrative: '\u6ca1\u6709\u767b\u5c71\u6756\u652f\u6491\uff0c\u4f60\u7684\u901f\u5ea6\u660e\u663e\u6162\u4e86\u4e0b\u6765\u3002',
+      narrative: '\u6ca1\u6709\u6756\u4e5f\u80fd\u8d70\uff0c\u53ea\u662f\u8981\u66f4\u5c0f\u5fc3\u4e00\u4e9b\u3002',
+    },
+    {
+      id: 'U27-2', text: '\u7ee7\u7eed\u7528\uff0c\u5c0f\u5fc3\u70b9\u5c31\u884c',
+      probability: 0.4,
+      consequences: [],
+      failConsequences: [{ type: 'damage_item', payload: 'pole' }],
+      failNarrative: '\u6756\u5c16\u5728\u4e00\u5757\u5ca9\u77f3\u4e0a\u731b\u5730\u4e00\u6ed1\u2014\u2014\u6574\u6839\u6756\u5f39\u51fa\u53bb\uff0c\u6756\u8eab\u649e\u5728\u77f3\u5934\u4e0a\u88c2\u4e86\u3002',
+      narrative: '\u867d\u7136\u6253\u6ed1\uff0c\u4f46\u52c9\u5f3a\u8fd8\u80fd\u7528\u3002',
+    },
+  ],
+}
